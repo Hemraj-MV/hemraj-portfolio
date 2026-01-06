@@ -27,19 +27,18 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND */
+/* GAME BACKGROUND */
 #game-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
 }
 
-/* THEME BUTTON */
+/* THEME TOGGLE */
 #theme-toggle {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 999;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -47,24 +46,30 @@ body {
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
+  z-index: 10;
 }
 
 /* UI */
 .ui {
   max-width: 900px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
-/* PANELS */
+/* PANEL */
 .panel {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 40px;
-  margin-bottom: 60px;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 /* LEVEL TAG */
@@ -78,15 +83,30 @@ body {
   color: var(--muted);
 }
 
+/* TYPOGRAPHY */
+h1 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+}
+
+p, li {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.muted {
+  color: var(--muted);
+}
+
 /* HERO */
 .hero h1 span {
   display: block;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-}
-
-.hero p {
-  margin-top: 15px;
-  color: var(--muted);
 }
 
 /* GRID */
@@ -97,25 +117,36 @@ body {
 }
 
 .card {
-  padding: 20px;
+  padding: 28px;
+  border-radius: 16px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
 }
 
 /* LIST */
 .list {
-  margin-top: 15px;
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .list li {
-  margin-bottom: 10px;
+  padding-left: 16px;
+  position: relative;
 }
 
-/* AI */
+.list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
+/* AI DEMO */
 input {
   width: 100%;
-  padding: 10px;
   margin-top: 10px;
+  padding: 10px;
   font-size: 16px;
 }
 
@@ -128,7 +159,7 @@ button {
 /* LINKS */
 .links a {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 16px;
   text-decoration: none;
   color: var(--text);
   border-bottom: 1px solid transparent;
@@ -138,15 +169,14 @@ button {
   border-bottom: 1px solid var(--text);
 }
 
-.muted {
-  color: var(--muted);
-}
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .ui {
+    padding: 80px 16px;
+    gap: 60px;
+  }
   .panel {
-    padding: 25px;
-    margin-bottom: 40px;
+    padding: 32px;
   }
   .grid {
     grid-template-columns: 1fr;
