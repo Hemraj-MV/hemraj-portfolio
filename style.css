@@ -1,0 +1,158 @@
+:root {
+  --bg: #0b0b0f;
+  --panel: rgba(20,20,30,0.75);
+  --text: #eaeaf0;
+  --muted: #b5b5c5;
+  --border: rgba(255,255,255,0.08);
+}
+
+body.light {
+  --bg: #f4f6fb;
+  --panel: rgba(255,255,255,0.9);
+  --text: #0b0b0f;
+  --muted: #555;
+  --border: rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* BACKGROUND */
+#game-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* THEME BUTTON */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* UI */
+.ui {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+/* PANELS */
+.panel {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 60px;
+}
+
+/* LEVEL TAG */
+.level::before {
+  content: "LEVEL " attr(data-level);
+  position: absolute;
+  top: -14px;
+  right: 20px;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* HERO */
+.hero h1 span {
+  display: block;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.hero p {
+  margin-top: 15px;
+  color: var(--muted);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* LIST */
+.list {
+  margin-top: 15px;
+}
+
+.list li {
+  margin-bottom: 10px;
+}
+
+/* AI */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+/* LINKS */
+.links a {
+  display: inline-block;
+  margin-right: 15px;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid transparent;
+}
+
+.links a:hover {
+  border-bottom: 1px solid var(--text);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .panel {
+    padding: 25px;
+    margin-bottom: 40px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .links a {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
