@@ -24,12 +24,6 @@ for (let i = 0; i < COUNT; i++) {
   });
 }
 
-let mouse = { x: null, y: null };
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-
 function draw() {
   ctx.clearRect(0, 0, w, h);
   const light = document.body.classList.contains("light");
@@ -49,7 +43,9 @@ function draw() {
       const b = nodes[j];
       const d = Math.hypot(a.x - b.x, a.y - b.y);
       if (d < 120) {
-        ctx.strokeStyle = light ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)";
+        ctx.strokeStyle = light
+          ? "rgba(0,0,0,0.08)"
+          : "rgba(255,255,255,0.08)";
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -95,10 +91,10 @@ function runAIDemo() {
   const out = document.getElementById("ai-output");
 
   let res =
-    input.includes("rag") ? "RAG grounds AI responses using real data and retrieval pipelines."
+    input.includes("rag") ? "RAG grounds AI responses using reliable retrieved data."
   : input.includes("ai") ? "I use AI only where it adds real system value."
   : input.includes("system") ? "I design systems by separating UI, logic, data, and intelligence."
-  : input.includes("project") ? "I start from the problem, then choose tools."
+  : input.includes("project") ? "I start from the problem, then choose the right tools."
   : input.includes("internship") ? "My internship involved real-world billing and internal systems."
   : "Try: ai, rag, system, project, internship";
 
